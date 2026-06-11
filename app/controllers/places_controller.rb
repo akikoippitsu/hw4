@@ -6,10 +6,17 @@ class PlacesController < ApplicationController
 
   def show
     @place = Place.find_by({ "id" => params["id"] })
-    @entries = Entry.where({ "place_id" => @place["id"] })
+    if session["user_id"].present?
+      @entries = Entry.where({ "place_id" => @place["id"], "user_id" => session["user_id"] })
+    else
+      @entries = []
+    end
   end
 
   def new
+    if session["user_id"].nil?
+      redirect_to "/login"
+    end
   end
 
   def create

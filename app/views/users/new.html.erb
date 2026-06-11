@@ -1,17 +1,24 @@
-<h1>New User Account</h1>
+<h1>Sign Up</h1>
 
 <form action="/users" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
   <p>
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username">
+    <label>Username</label>
+    <input type="text" name="username" class="form-control">
   </p>
+
   <p>
-    <label for="email">Email</label>
-    <input type="text" name="email" id="email">
+    <label>Email</label>
+    <input type="text" name="email" class="form-control">
   </p>
+
   <p>
-    <label for="password">Password</label>
-    <input type="text" name="password" id="password">
+    <label>Password</label>
+    <input type="password" name="password" class="form-control">
   </p>
-  <button>Signup</button>
+
+  <button class="btn btn-primary">Sign Up</button>
 </form>
+
+<p><a href="/login" class="btn btn-secondary">Already have an account? Login</a></p>
